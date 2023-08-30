@@ -1,0 +1,434 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap");
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  max-width: 110rem;
+  margin: 4vw auto;
+  min-height: 70vh;
+  border-radius: 6px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 1200px) {
+  .container {
+    margin: auto;
+    min-height: 100vh;
+  }
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.search_form {
+  grid-area: search;
+}
+
+.likes {
+  grid-area: likes;
+}
+
+header {
+  display: grid;
+  align-items: center;
+  padding: 0 20px;
+  background: #f9f5f3;
+  border-radius: 10px 10px 0 0;
+  grid-template-areas: "logo search likes";
+}
+@media (max-width: 700px) {
+  header {
+    grid-template-areas: "logo likes" "search search";
+  }
+}
+header .logo {
+  display: flex;
+  align-items: center;
+}
+header .logo img {
+  height: 100px;
+}
+header .logo a {
+  color: rgba(223, 37, 37, 0.842);
+}
+header .search_form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 700px) {
+  header .search_form {
+    margin-bottom: 30px;
+  }
+}
+header form {
+  background: white;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+header form:focus-within {
+  transform: translateY(-2px);
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+header form input {
+  border: none;
+  font-size: 15px;
+  width: 300px;
+  outline: none;
+  padding: 3px 8px;
+  border-radius: 40px;
+}
+header form input::-moz-placeholder {
+  color: #b9aba6;
+}
+header form input::placeholder {
+  color: #b9aba6;
+}
+header form button {
+  border-radius: 40px;
+  padding: 10px 30px;
+  background: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+  color: white;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+header form button:hover {
+  scale: 1.1;
+}
+header .likes {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  font-size: 25px;
+  cursor: pointer;
+  margin-left: 60px;
+  position: relative;
+}
+header .likes:hover > .list {
+  visibility: visible;
+  opacity: 1;
+}
+@media (max-width: 700px) {
+  header .likes {
+    margin-left: unset;
+  }
+}
+header .likes i {
+  transition: all 0.2s;
+}
+header .likes i:hover {
+  color: rgba(128, 128, 128, 0.795);
+}
+header .likes .list {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: -330px;
+  background: rgb(150, 144, 144);
+  border-radius: 20px;
+  padding: 10px;
+  min-height: 140px;
+  min-width: 220px;
+  transition: opacity 1s, visibility 0.3s;
+  z-index: 1000;
+}
+header .likes .list a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.459);
+  padding: 3px;
+}
+header .likes .list a img {
+  height: 70px;
+  width: 50px;
+  border-radius: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+header .likes .list a p {
+  font-size: 15px;
+  color: white;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  height: 100%;
+  flex-grow: 1;
+}
+@media (max-width: 1200px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+main section {
+  height: 100%;
+}
+main .results {
+  display: flex;
+  flex-direction: column;
+}
+main .results .result-link {
+  background: white;
+  border-top: white;
+  display: flex;
+  padding: 10px 20px;
+  gap: 20px;
+  align-items: center;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+main .results .result-link:hover {
+  transform: translateY(-2px);
+  background: rgba(192, 117, 79, 0.1098039216);
+}
+main .results .result-link img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .results .result-link .data h4 {
+  color: rgba(0, 0, 0, 0.664);
+  white-space: nowrap;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 1200px) {
+  main .results .result-link .data h4 {
+    max-width: 500px;
+  }
+}
+
+.recipe {
+  background: #f9f5f3;
+}
+
+.recipe figure {
+  height: 300px;
+  position: relative;
+}
+.recipe figure::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-image: linear-gradient(90deg, #A9C9FF 0%, #FFBBEC 100%);
+  opacity: 0.4;
+}
+.recipe figure img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.recipe figure h1 {
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  transform: translate(-40% 20%);
+  transform: skewY(-6deg);
+  color: white;
+  font-weight: 600;
+  background-image: linear-gradient(90deg, #A9C9FF 70%, #FFBBEC 100%);
+  white-space: nowrap;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.562);
+  padding: 10px 30px;
+  font-family: "Ubuntu", sans-serif;
+}
+.recipe figure .like-area {
+  display: flex;
+  justify-content: end;
+  padding: 20px;
+}
+.recipe figure .like-area i {
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 5px;
+  transition: all 300ms;
+  cursor: pointer;
+}
+.recipe figure .like-area i:hover {
+  transform: scale(0.9);
+}
+
+.recipe .ingredients {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  margin: 40px 0 0;
+}
+.recipe .ingredients ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+  width: 90%;
+  margin: 0 auto;
+}
+@media (max-width: 700px) {
+  .recipe .ingredients ul {
+    grid-template-columns: 1fr;
+  }
+}
+.recipe .ingredients ul li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.recipe .ingredients ul li i {
+  color: #91b8fd;
+}
+.recipe .ingredients ul li p {
+  white-space: nowrap;
+  max-width: 289px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 700px) {
+  .recipe .ingredients ul li p {
+    max-width: 450px;
+  }
+}
+@media (max-width: 500px) {
+  .recipe .ingredients ul li p {
+    max-width: 300px;
+  }
+}
+.recipe .ingredients button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 30px;
+  padding: 10px;
+  color: white;
+  font-weight: 600;
+  background-image: linear-gradient(90deg, #A9C9FF 70%, #FFBBEC 100%);
+  transition: all 300ms;
+  max-width: 500px;
+  margin: 50px auto;
+  width: 100%;
+  font-size: 15px;
+}
+.recipe .ingredients button span, .recipe .ingredients button i {
+  pointer-events: none;
+}
+.recipe .ingredients button i {
+  font-size: 20px;
+}
+.recipe .ingredients button:hover {
+  scale: 0.95;
+}
+
+.recipe .directions {
+  text-align: center;
+  padding-bottom: 40px;
+}
+.recipe .directions h2 {
+  transform: skewY(-3deg);
+  font-weight: 600;
+  color: rgba(235, 86, 193, 0.8705882353);
+  font-family: "ubuntu";
+  font-size: 30px;
+  text-shadow: 0 0 10px #FFBBEC;
+}
+.recipe .directions p {
+  padding: 50px;
+}
+.recipe .directions p span {
+  color: #c088b0;
+}
+.recipe .directions a {
+  padding: 10px 30px;
+  border: 1px solid #A9C9FF;
+  border-radius: 30px;
+  transition: all 300ms;
+}
+.recipe .directions a:hover {
+  background-color: #1d3e77;
+  color: white;
+}
+
+.shopping {
+  padding: 5px 2px;
+}
+.shopping h2 {
+  font-family: "ubuntu";
+  text-align: center;
+  color: #A9C9FF;
+  margin: 30px;
+}
+.shopping .button-area {
+  display: flex;
+  justify-content: end;
+}
+.shopping .button-area button {
+  display: none;
+  gap: 5px;
+  background-color: rgba(255, 0, 0, 0.692);
+  color: white;
+  cursor: pointer;
+  transition: scale 0.3s;
+}
+.shopping .button-area button:hover {
+  scale: 0.9;
+}
+.shopping ul {
+  overflow-x: auto;
+}
+.shopping ul li {
+  list-style: none;
+  padding: 5px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.199);
+}
+.shopping ul li i {
+  cursor: pointer;
+  color: rgb(241, 98, 122);
+}
+
+#like-btn {
+  color: rgba(255, 0, 0, 0.568);
+}
+
+.loader {
+  margin: 80px auto;
+}
+.loader img {
+  width: 300px;
+}/*# sourceMappingURL=style.css.map */
